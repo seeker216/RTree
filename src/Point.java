@@ -1,5 +1,6 @@
 public class Point implements Cloneable {
     private float[] data;
+    private String text;
 
     public Point(float[] data) {
         if (data == null) {
@@ -61,6 +62,14 @@ public class Point implements Cloneable {
      */
     public int getIntCoordinate(int index) {
         return (int) data[index];
+    }
+
+    /**
+     *
+     * @return 文本信息
+     */
+    public String getText(){
+        return text;
     }
 
     @Override
