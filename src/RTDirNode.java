@@ -38,42 +38,6 @@ public class RTDirNode extends RTNode {
 
     /**
      * @param rectangle
-     * @return -->返回最小重叠面积的结点的索引， 如果重叠面积相等则选择加入此Rectangle后面积增量更小的，
-     *         如果面积增量还相等则选择自身面积更小的
-     */
-    private int findLeastOverlap(Rectangle rectangle) {
-        float overlap = Float.POSITIVE_INFINITY;
-        int sel = -1;
-
-        for (int i = 0; i < usedSpace; i++) {
-            RTNode node = getChild(i);
-            float ol = 0; // 用于记录每个孩子的datas数据与传入矩形的重叠面积之和
-
-            for (int j = 0; j < node.datas.length; j++) {
-                // 将传入矩形与各个矩形重叠的面积累加到ol中，得到重叠的总面积
-                ol += rectangle.intersectingArea(node.datas[j]);
-            }
-            if (ol < overlap) {
-                overlap = ol;// 记录重叠面积最小的
-                sel = i;// 记录第几个孩子的索引
-            }
-            // 如果重叠面积相等则选择加入此Rectangle后面积增量更小的,如果面积增量还相等则选择自身面积更小的
-            else if (ol == overlap) {
-                double area1 = datas[i].getUnionRectangle(rectangle).getArea() - datas[i].getArea();
-                double area2 = datas[sel].getUnionRectangle(rectangle).getArea() - datas[sel].getArea();
-
-                if (area1 == area2) {
-                    sel = (datas[sel].getArea() <= datas[i].getArea()) ? sel : i;
-                } else {
-                    sel = (area1 < area2) ? i : sel;
-                }
-            }
-        }
-        return sel;
-    }
-
-    /**
-     * @param rectangle
      * @return -->面积增量最小的结点的索引，如果面积增量相等则选择自身面积更小的
      */
     private int findLeastEnlargement(Rectangle rectangle) {

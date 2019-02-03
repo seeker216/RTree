@@ -4,10 +4,10 @@ public class Point implements Cloneable {
 
     public Point(float[] data) {
         if (data == null) {
-            throw new IllegalArgumentException("Coordinates cannot be null."); // ★坐标不能为空
+            throw new IllegalArgumentException("Coordinates cannot be null."); // 坐标不能为空
         }
         if (data.length != 2) {
-            throw new IllegalArgumentException("Point dimension should be 2."); // ★点的维度必须为2
+            throw new IllegalArgumentException("Point dimension should be 2."); // 点的维度必须为2
         }
 
         this.data = new float[data.length];
@@ -16,10 +16,10 @@ public class Point implements Cloneable {
 
     public Point(int[] data) {
         if (data == null) {
-            throw new IllegalArgumentException("Coordinates cannot be null."); // ★坐标不能为空
+            throw new IllegalArgumentException("Coordinates cannot be null."); // 坐标不能为空
         }
         if (data.length != 2) {
-            throw new IllegalArgumentException("Point dimension should be 2."); // ★点的维度必须为2
+            throw new IllegalArgumentException("Point dimension should be 2."); // 点的维度必须为2
         }
 
         this.data = new float[data.length];
